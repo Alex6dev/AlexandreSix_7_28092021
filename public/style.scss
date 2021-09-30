@@ -1,0 +1,165 @@
+$color:(
+    Ing:#3282f7,
+    App:#68D9A4,
+    Ust:#ED6454,
+);
+@mixin input (){
+    height: 3rem;
+    padding: 1rem;
+    font-size: 1.1rem;
+    margin-right: 1.5rem;
+    margin-top: 1.5rem;
+    color: white;
+}
+::placeholder{
+    color: white;
+    opacity: 1;
+}
+html{
+    padding: 3%;
+}
+header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+#form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+input{
+    border: none;
+    border-radius: 0.3rem;
+}
+#recherche{
+    background-color: #E7E7E7;
+    width: 94%;
+    height: 3rem;
+    padding-left: 1rem; 
+    &::placeholder{
+        color: black;
+        opacity: 0.5;
+    }
+}
+.loupe{
+    position: absolute;
+    font-size: 1.7rem;
+    right: 10%;
+    top: 16.2rem;
+}
+#boxTagsActifs{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+.etiquette{
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    padding-left: 1rem;
+    color: white;
+    border-radius: 0.5rem;
+    margin-right: 2rem;
+}
+.croix{
+    color: white;
+    font-size: 1.5rem;
+    margin: 0.8rem 1rem 0 1rem ;
+    cursor: pointer;
+}
+.Ing{
+    background-color: map-get($map: $color, $key:Ing );
+}
+.App{
+    background-color: map-get($map: $color, $key:App );
+}
+.Ust{
+    background-color: map-get($map: $color, $key:Ust );
+}
+#boxZoneDesInputs{
+    display: flex;
+    flex-direction: row;
+}
+#ingredients ,#appareil ,#ustensiles{
+    @include input()
+    
+}
+.fa-chevron-up{
+    //color: white; 
+    font-size: 2rem;
+    transform:rotate(180deg);
+    &Ing{
+        position: absolute;
+        top: 26rem;
+        left: 16rem;
+    }
+    &App{
+        position: absolute;
+        top: 26rem;
+        left: 33.5rem;
+    }
+    &Ust{
+        position: absolute;
+        top: 26rem;
+        left: 51rem;
+    }
+}
+#listeRecette{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    
+}
+.recette{
+    width: 30%;
+    min-width: 400px;
+    height: 450px; 
+    display: flex;
+    flex-direction: column;
+    margin-right: 2rem;
+    margin-top: 2rem;
+    border-radius: 0.5rem; 
+    overflow: hidden;
+    &__Vide{
+        width: 100%;
+        height: 50%;
+        background-color: #C7BEBE;
+    }
+    &__Info{
+        background-color: #E7E7E7;
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        height: 50%;
+    }
+    &__TitreTemps{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    &__BoxTemps{
+        display: flex;
+        flex-direction: row;
+    }
+    &__clock{
+        margin-top: 1rem;
+        margin-right: 1rem;
+    }
+    &__IngProces{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+    &__Ingredients{
+        width: 50%;
+        font-size: 0.8rem; 
+        line-height: 14px;
+    }
+    &__Proces{
+        width: 50%; 
+        font-size: 0.8rem; 
+    }
+} 

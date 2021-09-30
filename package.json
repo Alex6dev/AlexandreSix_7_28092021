@@ -1,0 +1,19 @@
+{
+  "name": "alexandresix_7_28092021",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./public/style.scss:./public/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alex6dev/AlexandreSix_7_28092021.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alex6dev/AlexandreSix_7_28092021/issues"
+  },
+  "homepage": "https://github.com/Alex6dev/AlexandreSix_7_28092021#readme"
+}
