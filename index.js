@@ -1,114 +1,4 @@
-/*const recipes = [ 
-    {
-        "id": 1,
-        "name" : "Limonade de Coco",
-        "servings" : 1,
-        "ingredients": [
-            {
-                "ingredient" : "Lait de coco",  
-                "quantity" : 400,
-                "unit" : "ml"
-            },
-            {
-                "ingredient" : "Jus de citron",
-                "quantity" : 2
-            },
-            {
-                "ingredient" : "Crème de coco",
-                "quantity" : 2,
-                "unit" : "cuillères à soupe"
-            },
-            {
-                "ingredient" : "Sucre",
-                "quantite" : 30,
-                "unit" : "grammes"
-            },
-            {
-                "ingredient": "Glaçons"
-            }
-        ],
-        "time": 10,
-        "description": "Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée",
-        "appliance": "Blender",
-        "ustensils": ["cuillère à Soupe", "verres", "presse citron" ]
-    },
-    {
-        "id": 2,
-        "name" : "Poisson Cru à la tahitienne",
-        "servings": 2,
-        "ingredients": [
-            {
-                "ingredient" : "Thon Rouge (ou blanc)",
-                "quantity" : 200,
-                "unit" : "grammes"
-            },
-            {
-                "ingredient" : "Concombre",
-                "quantity" : 1
-            },
-            {
-                "ingredient" : "Tomate",
-                "quantity" : 2
-            },
-            {
-                "ingredient" : "Carotte",
-                "quantite" : 1
-            },
-            {
-                "ingredient" : "Citron Vert",
-                "quantity" : 5
-            },
-            {
-                "ingredient" : "Lait de Coco",
-                "quantity" : 100,
-                "unit" : "ml"
-            }
-        ],
-        "time": 60,
-        "description": "Découper le thon en dés, mettre dans un plat et recouvrir de jus de citron vert (mieux vaut prendre un plat large et peu profond). Laisser reposer au réfrigérateur au moins 2 heures. (Si possible faites-le le soir pour le lendemain. Après avoir laissé mariner le poisson, coupez le concombre en fines rondelles sans la peau et les tomates en prenant soin de retirer les pépins. Rayer la carotte. Ajouter les légumes au poissons avec le citron cette fois ci dans un Saladier. Ajouter le lait de coco. Pour ajouter un peu plus de saveur vous pouver ajouter 1 à 2 cuillères à soupe de Crème de coco",
-        "appliance": "Saladier",
-        "ustensils": ["presse citron"]
-    },{
-        "id": 3,
-        "name": "Poulet coco réunionnais",
-        "servings": 4,
-        "ingredients": [
-            {
-                "ingredient": "Poulet",
-                "quantity" : 1          
-            },
-            {
-                "ingredient": "Lait de coco",
-                "quantity" : 400,
-                "unit" : "ml"
-            },
-            {
-                "ingredient": "Coulis de tomate",
-                "quantity" : 25,
-                "unit" : "cl"
-            },
-            {
-                "ingredient": "Oignon",
-                "quantity" : 1
-            },
-            {
-                "ingredient": "Poivron rouge",
-                "quantity": 1
-            },
-            {
-                "ingredient": "Huile d'olive"
-            }
-        ],
-        "time": 80,
-        "description": "Découper le poulet en morceaux, les faire dorer dans une cocotte avec de l'huile d'olive. Salez et poivrez. Une fois doré, laisser cuire en ajoutant de l'eau. Au bout de 30 minutes, ajouter le coulis de tomate, le lait de coco ainsi que le poivron et l'oignon découpés en morceaux. Laisser cuisiner 30 minutes de plus. Servir avec du riz",
-        "appliance": "Cocotte",
-        "ustensils": ["couteau"]
-    }
-]*/
-
 import { recipes } from "./recipes.js";
-
-  
   
 function enTete(){
     const element=document.createElement("header");
@@ -129,23 +19,33 @@ function main(){
     <form name="search" role="search" method="get" action="" id="form" onsubmit="return validate();">
         <div id="boxGrandInput">
             <label for="recherche"></label>
-            <input type="text" id="recherche" name="recherche" placeholder="Rechercher un ingrédient, appareil, ustensiles ou recette "></input>
-            <i class="fas fa-search loupe"></i>
+            <input type="text" id="recherche" name="recherche" placeholder="Rechercher un ingrédient, appareil, ustensiles ou recette ">
+                <i class="fas fa-search loupe"></i>
+            </input>
+            
         </div>
         <div id="boxTagsActifs">
         
         </div>
         <section id="boxZoneDesInputs">
             <label for="ingredients" ></label>
-            <input type="text" class="Ing" id="ingredients" name="ingredients" placeholder="Ingredients"></input>
-            <i class="fas fa-chevron-up fa-chevron-upIng"></i>
+            <input type="text" class="Ing" id="ingredients" name="ingredients" placeholder="Ingredients">
+                <i class="fas fa-chevron-up fa-chevron-upIng"></i>
+                <ul id="listeIng" class="listeTagsChoix"></ul>
+            </input>
             
             <label for="appareil" ></label>
-            <input type="text" class="App" id="appareil" name="appareil" placeholder="Appareil"></input>
-            <i class="fas fa-chevron-up fa-chevron-upApp"></i>
+            <input type="text" class="App" id="appareil" name="appareil" placeholder="Appareil">
+                <i class="fas fa-chevron-up fa-chevron-upApp"></i>
+                <ul id="listeApp" class="listeTagsChoix"></ul>
+            </input>
+            
             <label for="ustensiles" ></label>
-            <input type="text" class="Ust" id="ustensiles" name="ustensiles" placeholder="Ustensiles"></input>
-            <i class="fas fa-chevron-up fa-chevron-upUst"></i>    
+            <input type="text" class="Ust" id="ustensiles" name="ustensiles" placeholder="Ustensiles">
+                <i class="fas fa-chevron-up fa-chevron-upUst"></i>  
+                <ul id="listeUst" class="listeTagsChoix"></ul>
+            </input>
+              
         </section>
     </form>
     <section id="listeRecette">
@@ -159,9 +59,47 @@ function main(){
     
 }
 main()
+
+var tabIng=[]
+recipes.forEach(ings=>{
+    ings.ingredients.forEach(ing=>{
+        tabIng.push(ing.ingredient)})
+})
+var NewtabIng= new Set(tabIng)
+NewtabIng.forEach(Ing=>{
+    let elt=document.createElement('li')
+    elt.textContent=`${Ing}`;
+    document.getElementById('listeIng').appendChild(elt)
+
+})
+var tabApp=[]
+recipes.forEach(recette=>{
+    tabApp.push(recette.appliance)
+})
+var NewtabApp= new Set(tabApp)
+NewtabApp.forEach(App=>{
+    let elt=document.createElement('li')
+    elt.textContent=`${App}`;
+    document.getElementById('listeApp').appendChild(elt)
+
+})
+
+var tabUst=[]
+recipes.forEach(recette=>{
+    recette.ustensils.forEach(ust=>{ 
+        tabUst.push(ust)})
+})
+var NewtabUst= new Set(tabUst)
+NewtabUst.forEach(ust=>{
+    let elt=document.createElement('li')
+    elt.textContent=`${ust}`;
+    document.getElementById('listeUst').appendChild(elt)
+
+})
+
 document.getElementById("ingredients").addEventListener("input",displayVignetteIng)
 function displayVignetteIng(e){
-    e.preveutDefault();
+    
     let evtt=e.target.value
     const regex=new RegExp('[a-zA-Z]{3,}')
     if(regex.test(evtt)){

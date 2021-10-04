@@ -42,8 +42,8 @@ input {
 .loupe {
   position: absolute;
   font-size: 1.7rem;
+  margin: 0.6rem 0 0 0;
   right: 10%;
-  top: 16.2rem;
 }
 
 #boxTagsActifs {
@@ -97,23 +97,50 @@ input {
 }
 
 .fa-chevron-up {
+  color: white;
   font-size: 2rem;
   transform: rotate(180deg);
+  margin: 3rem 0 0 0;
+  position: absolute;
 }
 .fa-chevron-upIng {
-  position: absolute;
-  top: 26rem;
-  left: 16rem;
+  left: 15rem;
 }
 .fa-chevron-upApp {
-  position: absolute;
-  top: 26rem;
-  left: 33.5rem;
+  left: 32rem;
 }
 .fa-chevron-upUst {
-  position: absolute;
-  top: 26rem;
   left: 51rem;
+}
+
+.listeTagsChoix {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 60rem;
+  list-style-type: none;
+  position: absolute;
+  border-radius: 0 0 0.5rem 0.5rem;
+  color: white;
+}
+
+#listeIng {
+  background-color: #3282f7;
+  margin-top: 6.5rem;
+  display: none;
+}
+
+#listeApp {
+  background-color: #68D9A4;
+  margin-top: 6.5rem;
+  display: none;
+}
+
+#listeUst {
+  background-color: #ED6454;
+  margin-top: 6.5rem;
+  display: none;
 }
 
 #listeRecette {
