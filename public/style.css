@@ -17,6 +17,14 @@ a {
   cursor: pointer;
 }
 
+li {
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+li p {
+  margin: 0;
+}
+
 #form {
   width: 100%;
   display: flex;
@@ -26,6 +34,7 @@ a {
 input {
   border: none;
   border-radius: 0.3rem;
+  margin-right: 1rem;
 }
 
 #recherche {
@@ -61,6 +70,7 @@ input {
   color: white;
   border-radius: 0.5rem;
   margin-right: 2rem;
+  margin-bottom: 2rem;
 }
 
 .croix {
@@ -91,8 +101,6 @@ input {
   height: 3rem;
   padding: 1rem;
   font-size: 1.1rem;
-  margin-right: 1.5rem;
-  margin-top: 1.5rem;
   color: white;
 }
 
@@ -100,46 +108,62 @@ input {
   color: white;
   font-size: 2rem;
   transform: rotate(180deg);
-  margin: 3rem 0 0 0;
+  margin: 1.5rem 0 0 0;
   position: absolute;
 }
 .fa-chevron-upIng {
-  left: 15rem;
+  margin-left: 12rem;
 }
 .fa-chevron-upApp {
-  left: 32rem;
+  margin-left: 28rem;
 }
 .fa-chevron-upUst {
-  left: 51rem;
+  margin-left: 45rem;
 }
 
 .listeTagsChoix {
+  margin: 0;
+  padding-left: 2rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  max-width: 60rem;
   list-style-type: none;
   position: absolute;
   border-radius: 0 0 0.5rem 0.5rem;
   color: white;
 }
 
+.elementListe {
+  width: 11rem;
+  margin-top: 0.5rem;
+}
+
 #listeIng {
   background-color: #3282f7;
-  margin-top: 6.5rem;
+  margin-top: 5rem;
+  width: 33rem;
+  max-height: 19rem;
+  min-height: 4rem;
+  overflow: hidden;
   display: none;
 }
 
 #listeApp {
   background-color: #68D9A4;
-  margin-top: 6.5rem;
+  margin-top: 5rem;
+  width: 13.65rem;
+  height: 30rem;
+  margin-left: 16.6rem;
   display: none;
 }
 
 #listeUst {
   background-color: #ED6454;
-  margin-top: 6.5rem;
+  margin-top: 5rem;
+  width: 30rem;
+  height: 30rem;
+  margin-left: 33.25rem;
   display: none;
 }
 
