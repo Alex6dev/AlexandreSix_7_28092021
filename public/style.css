@@ -153,7 +153,8 @@ input {
   background-color: #68D9A4;
   margin-top: 5rem;
   width: 13.65rem;
-  height: 30rem;
+  max-height: 24rem;
+  min-height: 4rem;
   margin-left: 16.6rem;
   display: none;
 }
@@ -162,7 +163,8 @@ input {
   background-color: #ED6454;
   margin-top: 5rem;
   width: 30rem;
-  height: 30rem;
+  max-height: 25rem;
+  min-height: 4rem;
   margin-left: 33.25rem;
   display: none;
 }

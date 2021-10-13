@@ -69,7 +69,7 @@ input{
 }
 #boxTagsActifs{
     display: flex;
-    flex-direction: row;
+    flex-direction: row; 
     flex-wrap: wrap;
     margin-top: 1.5rem;
 }
@@ -154,7 +154,8 @@ input{
     background-color: map-get($map: $color, $key:App );
     margin-top:5rem;
     width: 13.65rem;
-    height: 30rem;
+    max-height: 24rem;
+    min-height: 4rem;
     margin-left: 16.6rem;
     display: none;
 }
@@ -162,7 +163,8 @@ input{
     background-color: map-get($map: $color, $key:Ust );
     margin-top:5rem;
     width: 30rem;
-    height: 30rem;
+    max-height: 25rem;
+    min-height: 4rem;
     margin-left: 33.25rem;
     display: none;
 }
