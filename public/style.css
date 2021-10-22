@@ -127,16 +127,18 @@ input {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   list-style-type: none;
   position: absolute;
   border-radius: 0 0 0.5rem 0.5rem;
   color: white;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .elementListe {
-  width: 11rem;
-  margin-top: 0.5rem;
+  width: 10rem;
+  margin-top: 1rem;
 }
 
 #listeIng {
@@ -145,7 +147,6 @@ input {
   width: 33rem;
   max-height: 19rem;
   min-height: 4rem;
-  overflow: hidden;
   display: none;
 }
 
