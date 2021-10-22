@@ -1,6 +1,7 @@
 import { recipes } from "./recipes.js";
 var tabRecActu=recipes;
 /*----------------------------------------------------------------------entête------------------------------------------------------------------------------ */  
+
 function enTete(){
     const element=document.createElement("header");
     element.innerHTML=`
@@ -8,10 +9,10 @@ function enTete(){
     `;
     document
         .getElementById('app')
-        .appendChild(element)
+        .appendChild(element) 
     
 }
-enTete(); 
+enTete();
 /*------------------------------------------------------------------------------main--------------------------------------------------------------------------*/
 function main(){
     const element= document.createElement("main");
@@ -74,11 +75,13 @@ function displayVignetteRech(array){
     var saisieR=document.getElementById("recherche").value
     saisieR=saisieR.toLowerCase()            
     var nbCarR=saisieR.length
-    var chaine=array ;var nbMotSaisieR;
+    var nbMotSaisieR;
     let dernierFrappeR=saisieR.substring(nbCarR-1) 
+
     //demarre l'affichage lorsqu'il y a plus de 3 lettres
     const regex=new RegExp('[a-zA-Z]{3,}')
     if(regex.test(saisieR)){
+    
         if(dernierFrappeR != ' '){
             tabR=[];    
             nbMotSaisieR=saisieR.split(' ').length;
@@ -87,57 +90,60 @@ function displayVignetteRech(array){
             //recherche quand il y a plus de 1 mot
             if(nbMotSaisieR>1){
                 //recherche dans les ingredients
-                chaine.forEach(ing=>{
-                    ing.ingredients.forEach(ingg=>{
-                        elt=ingg.ingredient
+                for(var tabIngRecette of array){
+                    for(var ing of tabIngRecette.ingredients){
+                        elt=ing.ingredient
                         elt=elt.toLowerCase()
                         if(saisieR==elt.substring(0,nbCarR)){
-                            tabR.push(ing)
+                            tabR.push(tabIngRecette)
                         }
-                    })
-                    //recherche dans les titres
-                    elt=ing.name.toLowerCase()
-                    if(saisieR==elt.substring(0,nbCarR)){
-                        tabR.push(ing)
                     }
-                })            
+                    //recherche dans les titres
+                    for(var mots of tabIngRecette.name){
+                        mots=mots.toLowerCase()
+                        if(saisieR==mots.substring(0,nbCarR)){
+                            tabR.push(tabIngRecette)
+                        }
+                    }
+                }
+                    
             }else{//recherche quand il n'y a qu'un mot
                 if(nbCarR>0){//verifie que le champs n'est pas vide
-                    chaine.forEach(ing=>{//recherche dans les ingredients
-                        
-                        ing.ingredients.forEach(ingg=>{
-                            chaineMots=ingg.ingredient.split(' ')
-                            chaineMots.forEach(inggg=>{
-                                elt=inggg.toLowerCase()
-                                if(saisieR==elt.substring(0,nbCarR)){
-                                    tabR.push(ing)
+                for(var tabIngRecette of array){
+                        for(var ing of tabIngRecette.ingredients){
+                            chaineMots=ing.ingredient.split(' ')
+                            for(var ingg of chaineMots){
+                                ingg=ingg.toLowerCase()
+                                if(saisieR==ingg.substring(0,nbCarR)){
+                                    tabR.push(tabIngRecette)
                                 }
-                            })
-                        })
-                        //recherche dans les titres
-                        chaineMots=ing.name.split(" ")
-                        chaineMots.forEach(ingg=>{
-                            elt=ingg.toLowerCase()
-                            if(saisieR==elt.substring(0,nbCarR)){
-                                tabR.push(ing)
                             }
-                        })
-                        //erecherche dans les descriptions
-                        chaineMots= ing.description
+                            
+                        }
+                        //recherche dans les titres
+                        chaineMots=tabIngRecette.name.split(" ")
+                        for(var mot of chaineMots){
+                            elt=mot.toLowerCase()
+                            if(saisieR==elt.substring(0,nbCarR)){
+                                tabR.push(tabIngRecette)
+                            }
+                        }
+                        //recherche dans les descriptions
+                        chaineMots= tabIngRecette.description
                         chaineMots=chaineMots.toLowerCase()
                         chaineMots=chaineMots.split(' ')
-                        chaineMots.forEach(ingg=>{
-                            if(saisieR==ingg.substring(0,nbCarR)){
-                                saisieR
-                                tabR.push(ing)
+                        for(var descrip of chaineMots){
+                            if(saisieR== descrip.substring(0,nbCarR)){
+                                tabR.push(tabIngRecette)
                             }
-                        })
-                    })
+                        }
+                    }
                 }
             }
             //supprime les doublons
             tabR=[new Set(tabR)]
             tabR=tabR[0]
+            
             let container= document.getElementById("listeRecette")
             //si le tableau de resultat est modifier
             if(tabR.size>1 || tabR.size==1){
@@ -152,44 +158,44 @@ function displayVignetteRech(array){
                 container.appendChild(boxEmpty)
             }
         }  
+        
+            
     }else{
-            //actualiser quand le champs de recherche est vide
-            let elt=document.createElement("div")
-            elt.setAttribute('id','boxRecette')
-            let eltt=document.getElementById("listeRecette")
-            eltt.innerHTML=``;
-            eltt.appendChild(elt)
-            new recetteDisplay(array,tabRecActu)
-            tabR=tabRecActu
-            actualisationStartSug()
+        //actualiser quand le champs de recherche est vide
+        let elt=document.createElement("div")
+        elt.setAttribute('id','boxRecette')
+        let eltt=document.getElementById("listeRecette")
+        eltt.innerHTML=``;
+        eltt.appendChild(elt)
+        new recetteDisplay(array,tabRecActu)
+        tabR=tabRecActu
+        actualisationStartSug()
     }
     
 }
 /*--------------------------------------------------------fonction display suggestion --------------------------------------------------------------- */
 function displayTags(arraySort,cible,type){
     document.getElementById(cible).innerHTML=``;
-    arraySort.forEach(element=>{
+    for(let element of arraySort){
         let elt=document.createElement('li')
         elt.setAttribute('class','elementListe')
         elt.classList.add("elementListe"+type)
         elt.innerHTML=`<p>${element}</p>`;
         document.getElementById(cible).appendChild(elt)
-    
-    })
+    }
 }
 /* ----------------------fonction création la liste complete d'ingredients (start) sans valeur dans input---------------------*/
 var tabIng=[];
 function displayTagsStartsIng(array){
     tabIng=[]
     document.getElementById('listeIng').innerHTML=` `;
-
-    array.forEach(ings=>{
-        ings.ingredients.forEach(ing=>{
+    for(let ings of array){
+        for(let ing of ings.ingredients){
             let elt=ing.ingredient
             elt=elt.toLowerCase()
             tabIng.push(elt)
-        })
-    })
+        }
+    }
     tabIng= new Set(tabIng);
     displayTags(tabIng,'listeIng',"Ing")
     clickChoix('Ing',array)
@@ -212,16 +218,15 @@ function clickChoix(type){
     }
     var tabIngs=[]
     function rechIngt(nom){
-        tabR.forEach(ing=>{
-            ing.ingredients.forEach(ingg=>{
+        for(let ing of tabR ){
+            for(let ingg of ing.ingredients){
                 let inggg=ingg.ingredient
                 inggg=inggg.toLowerCase()
                 if(inggg==nom){
                     tabIngs.push(ing) 
                 }
-                
-            })
-        })
+            }
+        }
         tabR=tabIngs
         new recetteDisplay(tabR,tabRecActu)
         
@@ -242,22 +247,21 @@ function controlSaisieIng(array){
         //recherche quand il y a plus de 1 mot
         if(nbMotSaisie>1){
             //recherche dans les ingredients
-            chaine.forEach(ing=>{
+            for( let ing of chaine){
                 if(saisie==ing.substring(0,nbCar)){
                     chaineTab.push(ing)
                 }
-                
-            })
+            }
         }else{//recherche quand il n'y a qu'un mot
             if(nbCar>0){//verifie que le champs n'est pas vide
-                chaine.forEach(ing=>{//recherche dans les ingredients
+                for(let ing of chaine){
                     let chaineMots=ing.split(' ')
-                    chaineMots.forEach(ingg=>{
+                    for(let ingg of chaineMots){
                         if(saisie==ingg.substring(0,nbCar)){
                         chaineTab.push(ing)
                         }
-                    })
-                })
+                    }
+                }
             }
         }
         //suprime les doublons
@@ -279,7 +283,7 @@ function controlSaisieIng(array){
 }
 /*------------------le focus sur input---------------- */
 function focusinIng(liste){
-        window.setTimeout(()=>{
+    window.setTimeout(()=>{
         document.getElementById(liste).style.display='flex';
         document.getElementById("ingredients").style.width='33rem';
         document.getElementById("ingredients").style.borderRadius='0.3rem 0.3rem 0 0 ';
@@ -312,11 +316,11 @@ var tabApp=[];
 function displayTagsStartsApp(array){
     tabApp=[]
     document.getElementById('listeApp').innerHTML=` `;
-    array.forEach(elt=>{
+    for(let elt of array){
         let eltt=elt.appliance
         eltt=eltt.toLowerCase()
         tabApp.push(eltt)
-    })
+    }
 
     tabApp= new Set(tabApp);
     displayTags(tabApp,'listeApp',"App")
@@ -341,13 +345,13 @@ function clickChoixApp(type){
     var tabApps=[]
     function rechApps(nom){
         tabApps=[]
-        tabR.forEach(app=>{
+        for(let app of tabR){
             let appp=app.appliance
             appp=appp.toLocaleLowerCase()
             if(appp==nom){
                 tabApps.push(app)
             }
-        })
+        }
         tabR=tabApps
         new recetteDisplay(tabR,tabRecActu)
             
@@ -371,21 +375,22 @@ function controlSaisieApp(array){
         //recherche quand il y a plus de 1 mot
         if(nbMotSaisie>1){
             //recherche dans les appareils
-            chaine.forEach(ing=>{
+            for(let ing of chaine){
                 if(saisie==ing.substring(0,nbCar)){
                     chaineTabApp.push(ing)
                 }
-            })
+            }
         }else{//recherche quand il n'y a qu'un mot
             if(nbCar>0){//verifie que le champs n'est pas vide
-                chaine.forEach(ing=>{//recherche dans les appareils
+                //recherche dans les appareils
+                for(let ing of chaine){
                     let chaineMots=ing.split(' ')
-                    chaineMots.forEach(ingg=>{
+                    for(let ingg of chaineMots){
                         if(saisie==ingg.substring(0,nbCar)){
                         chaineTabApp.push(ing)
                         }
-                    })
-                })
+                    }
+                }
             }
         }
         //supprimer les doublons
@@ -440,13 +445,13 @@ var tabUst=[];
 function displayTagsStartsUst(array){
     tabUst=[]
     document.getElementById('listeUst').innerHTML=` `;
-    array.forEach(ings=>{
-        ings.ustensils.forEach(ing=>{
+    for(let ings of array){
+        for(let ing of ings.ustensils){
             let elt=ing
             elt=elt.toLowerCase()
             tabUst.push(elt)
-        })
-    })
+        }
+    }
     tabUst= new Set(tabUst);
     displayTags(tabUst,'listeUst',"Ust")
     clickChoixUst('Ust',array)
@@ -467,15 +472,14 @@ function clickChoixUst(type){
     }
     var tabUsts=[]
     function rechUst(nom){
-        tabR.forEach(obj=>{
-            obj.ustensils.forEach(ust=>{
+        for(let obj of tabR){
+            for(let ust of obj.ustensils){
                 let usts=ust.toLocaleLowerCase()
                 if(usts==nom){
                     tabUsts.push(obj)
                 }
-            })
-            
-        })
+            }
+        }
         tabR=tabUsts
         new recetteDisplay(tabR,tabRecActu)
         actualisationStartSug()
@@ -497,21 +501,22 @@ function controlSaisieUst(array){
         //recherche quand il y a plus de 1 mot
         if(nbMotSaisie>1){
             //recherche dans les ustensiles
-            chaine.forEach(ing=>{
+            for(let ing of chaine){
                 if(saisie==ing.substring(0,nbCar)){
                     chaineTabUst.push(ing)
                 }
-            })
+            }
         }else{//recherche quand il n'y a qu'un mot
             if(nbCar>0){//verifie que le champs n'est pas vide
-                chaine.forEach(ing=>{//recherche dans les ustensiles
+                //recherche dans les ustensiles
+                for(let ing of chaine){
                     let chaineMots=ing.split(' ')
-                    chaineMots.forEach(ingg=>{
+                    for(let ingg of chaineMots){
                         if(saisie==ingg.substring(0,nbCar)){ 
                         chaineTabUst.push(ing)
                         }
-                    })
-                })
+                    }
+                }
             }
         }
         //supprimer les doublons
@@ -535,7 +540,7 @@ function controlSaisieUst(array){
 /*------------------le focus sur input---------------- */
 
 document.getElementById("ustensiles").addEventListener("focusin",()=>focusinUst("listeUst"))
-document.getElementById("ustensiles").addEventListener("input",()=>controlSaisieUst(NewtabUst))
+document.getElementById("ustensiles").addEventListener("input",()=>controlSaisieUst(tabUst))
 document.getElementById("ustensiles").addEventListener("focusout",()=>focusoutUst("listeUst"))
 function focusinUst(liste){
     window.setTimeout(()=>{
@@ -607,7 +612,9 @@ class recetteDisplay{
     }
     display(tabChoix,tabStart){
         if(tabChoix==tabStart){
-            tabStart.forEach(element=>{new recetteFactory(element)}) 
+            for(let element of tabStart){
+                new recetteFactory(element)
+            }
         }else if(tabChoix.size<tabStart.length ||tabChoix.length<tabStart.length){
             let elt= document.getElementById('boxRecette')
             let element=document.getElementById("listeRecette")
@@ -615,9 +622,9 @@ class recetteDisplay{
             let eltt=document.createElement("div")
             eltt.setAttribute("id","boxRecette")
             element.appendChild(eltt)
-            tabR.forEach(element=>{new recetteFactory(element)}) 
-            
-            
+            for(let element of tabR){
+                new recetteFactory(element)
+            }
         }else{
             console.log("erreur dans la class recetteDisplay")
         }
