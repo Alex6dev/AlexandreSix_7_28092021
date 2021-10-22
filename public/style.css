@@ -127,15 +127,18 @@ input {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   list-style-type: none;
   position: absolute;
   border-radius: 0 0 0.5rem 0.5rem;
   color: white;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .elementListe {
-  width: 11rem;
+  width: 10rem;
+  height: 2rem;
   margin-top: 0.5rem;
 }
 
@@ -145,8 +148,9 @@ input {
   width: 33rem;
   max-height: 19rem;
   min-height: 4rem;
-  overflow: hidden;
   display: none;
+  scrollbar-width: thin;
+  scrollbar-color: blue;
 }
 
 #listeApp {
