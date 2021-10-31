@@ -398,7 +398,6 @@ function controlSaisieApp(array){
         displayTags(chaineTabApp[0],'listeApp',"App")
         //réinitialise les sugestions à 0
         if(saisie==""){
-            console.log("slt")
             displayTagsStartsApp(tabRecActu)
         }
 
@@ -417,7 +416,7 @@ function controlSaisieApp(array){
 
 document.getElementById("appareil").addEventListener("focusout",()=>focusoutApp("listeApp"))
 document.getElementById("appareil").addEventListener("focusin",()=>focusinApp("listeApp"))
-document.getElementById("appareil").addEventListener("input",()=>controlSaisieApp(NewtabApp))
+document.getElementById("appareil").addEventListener("input",()=>controlSaisieApp(tabApp))
 
 function focusinApp(liste){
     window.setTimeout(()=>{
