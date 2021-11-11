@@ -273,7 +273,7 @@ function controlSaisieIng(array){
         }
     }
     //écoute les mots en sugestion
-    let choix = document.getElementsByClassName("elementListe");
+    let choix = document.getElementsByClassName("elementListeIng");
     for(var i=0; i<choix.length;){
         let index= choix[i].innerHTML
         index=index.slice(3,-4)
@@ -291,7 +291,7 @@ function focusinIng(liste){
         document.getElementById("fa-chevron-upApp").style.marginLeft='47rem';
         document.getElementById("fa-chevron-upUst").style.marginLeft='64rem';
         document.getElementById("fa-chevron-upIng").style.transform='rotate(0deg)';
-    },150)
+    },200)
 }
 function focusoutIng(liste){
     window.setTimeout(()=>{
@@ -302,7 +302,7 @@ function focusoutIng(liste){
         document.getElementById("fa-chevron-upApp").style.marginLeft='28rem';
         document.getElementById("fa-chevron-upUst").style.marginLeft='45rem';
         document.getElementById("fa-chevron-upIng").style.transform='rotate(180deg)';
-    },100)
+    },150)
 }
 /*----------------------------------les Events ingrédients--------------- */
 document.getElementById("ingredients").addEventListener("focusin",()=>focusinIng("listeIng"))
@@ -423,7 +423,7 @@ function focusinApp(liste){
         document.getElementById(liste).style.display='flex';
         document.getElementById("appareil").style.borderRadius='0.3rem 0.3rem 0 0 ';
         document.getElementById("fa-chevron-upApp").style.transform='rotate(0deg)';
-    },150)
+    },200)
 }
 
 function focusoutApp(liste){
@@ -435,7 +435,7 @@ function focusoutApp(liste){
         document.getElementById("fa-chevron-upApp").style.marginLeft='28rem';
         document.getElementById("fa-chevron-upUst").style.marginLeft='45rem';
         document.getElementById("fa-chevron-upApp").style.transform='rotate(180deg)';
-    },100)
+    },150)
 }
 
 /* ----------------------fonction création la liste complete d'Ustensil (start) sans valeur dans input---------------------*/
@@ -548,7 +548,7 @@ function focusinUst(liste){
     document.getElementById("ustensiles").style.borderRadius='0.3rem 0.3rem 0 0 ';
     document.getElementById("fa-chevron-upUst").style.marginLeft='61rem';
     document.getElementById("fa-chevron-upUst").style.transform='rotate(0deg)';
-    },150)
+    },200)
 }
 
 function focusoutUst(liste){
@@ -560,7 +560,7 @@ function focusoutUst(liste){
         document.getElementById("fa-chevron-upApp").style.marginLeft='28rem';
         document.getElementById("fa-chevron-upUst").style.marginLeft='45rem';
         document.getElementById("fa-chevron-upUst").style.transform='rotate(180deg)';
-    },100)
+    },150)
 }
 
 /*----------------------------------------------------------------création des vignette tags---------------------------------------------------------------- */
