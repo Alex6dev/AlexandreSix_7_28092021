@@ -198,7 +198,7 @@ function displayTagsStartsIng(array){
     }
     tabIng= new Set(tabIng);
     displayTags(tabIng,'listeIng',"Ing")
-    clickChoix('Ing',array)
+    clickChoix('Ing')
 }
 displayTagsStartsIng(tabRecActu)
 /*------------------------la saisie avec sugestion--------------------------- */
@@ -267,18 +267,11 @@ function controlSaisieIng(array){
         //suprime les doublons
         chaineTab=[new Set(chaineTab)]
         displayTags(chaineTab[0],'listeIng',"Ing")
+        clickChoix('Ing')
         //réinitialise les sugestions à 0
         if(saisie==""){
             displayTagsStartsIng(tabRecActu)
         }
-    }
-    //écoute les mots en sugestion
-    let choix = document.getElementsByClassName("elementListeIng");
-    for(var i=0; i<choix.length;){
-        let index= choix[i].innerHTML
-        index=index.slice(3,-4)
-        choix[i].addEventListener('click',()=>new vignetteChoix(index,"Ing"));
-        i++
     }
 }
 /*------------------le focus sur input---------------- */
@@ -396,19 +389,12 @@ function controlSaisieApp(array){
         //supprimer les doublons
         chaineTabApp=[new Set(chaineTabApp)]
         displayTags(chaineTabApp[0],'listeApp',"App")
+        clickChoixApp("App")
         //réinitialise les sugestions à 0
         if(saisie==""){
             displayTagsStartsApp(tabRecActu)
         }
 
-    }
-    //écoute les mots en sugestion
-    let choixApp = document.getElementsByClassName("elementListeApp");
-    for(var i=0; i<choixApp.length;){
-        let index= choixApp[i].innerHTML
-        index=index.slice(3,-4)
-        choixApp[i].addEventListener('click',()=>new vignetteChoix(index,"App"));
-        i++
     }
 }
 /*------------------le focus sur input---------------- */
@@ -453,7 +439,7 @@ function displayTagsStartsUst(array){
     }
     tabUst= new Set(tabUst);
     displayTags(tabUst,'listeUst',"Ust")
-    clickChoixUst('Ust',array)
+    clickChoixUst('Ust')
 }
 displayTagsStartsUst(tabRecActu)
 function clickChoixUst(type){
@@ -521,19 +507,12 @@ function controlSaisieUst(array){
         //supprimer les doublons
         chaineTabUst=[new Set(chaineTabUst)]
         displayTags(chaineTabUst[0],'listeUst',"Ust")
+        clickChoixUst('Ust')
         //réinitialise les sugestions à 0
         if(saisie==""){
-            displayTagsStartsUst(tabRecActu)
+            displayTagsStartsUst(tabRecActu) 
         }
 
-    }
-    //écoute les mots en sugestion
-    let choixUst = document.getElementsByClassName("elementListeUst");
-    for(var i=0; i<choixUst.length;){
-        let index= choixUst[i].innerHTML
-        index=index.slice(3,-4)
-        choixUst[i].addEventListener('click',()=>new vignetteChoix(index,"Ust"));
-        i++
     }
 }
 /*------------------le focus sur input---------------- */
