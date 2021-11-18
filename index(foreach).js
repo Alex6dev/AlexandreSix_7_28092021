@@ -190,7 +190,7 @@ function displayTagsStartsIng(array){
     })
     tabIng= new Set(tabIng);
     displayTags(tabIng,'listeIng',"Ing")
-    clickChoix('Ing',array)
+    clickChoix('Ing')
 }
 displayTagsStartsIng(tabRecActu)
 /*------------------------la saisie avec sugestion--------------------------- */
@@ -261,19 +261,20 @@ function controlSaisieIng(array){
         //suprime les doublons
         chaineTab=[new Set(chaineTab)]
         displayTags(chaineTab[0],'listeIng',"Ing")
+        clickChoix('Ing')
         //réinitialise les sugestions à 0
         if(saisie==""){
             displayTagsStartsIng(tabRecActu)
         }
     }
     //écoute les mots en sugestion
-    let choix = document.getElementsByClassName("elementListeIng");
+    /*let choix = document.getElementsByClassName("elementListeIng");
     for(var i=0; i<choix.length;){
         let index= choix[i].innerHTML
         index=index.slice(3,-4)
         choix[i].addEventListener('click',()=>new vignetteChoix(index,"Ing"));
         i++
-    }
+    }*/
 }
 /*------------------le focus sur input---------------- */
 function focusinIng(liste){
@@ -318,7 +319,7 @@ function displayTagsStartsApp(array){
 
     tabApp= new Set(tabApp);
     displayTags(tabApp,'listeApp',"App")
-    clickChoixApp("App",array)
+    clickChoixApp("App")
 }
 displayTagsStartsApp(tabRecActu)
 
@@ -362,6 +363,7 @@ function controlSaisieApp(array){
     saisie=saisie.toLowerCase()
     var chaine=array;var nbMotSaisie;
     let dernierFrappe=saisie.substring(nbCar-1)
+    console.log(array)
     
     if(dernierFrappe != ' '){
         chaineTabApp=[];
@@ -377,6 +379,7 @@ function controlSaisieApp(array){
         }else{//recherche quand il n'y a qu'un mot
             if(nbCar>0){//verifie que le champs n'est pas vide
                 chaine.forEach(ing=>{//recherche dans les appareils
+                    console.log(ing)
                     let chaineMots=ing.split(' ')
                     chaineMots.forEach(ingg=>{
                         if(saisie==ingg.substring(0,nbCar)){
@@ -390,19 +393,12 @@ function controlSaisieApp(array){
         chaineTabApp=[new Set(chaineTabApp)]
         console.log(chaineTabApp)
         displayTags(chaineTabApp[0],'listeApp',"App")
+        clickChoixApp("App")
         //réinitialise les sugestions à 0
         if(saisie==""){
             displayTagsStartsApp(tabRecActu)
         }
 
-    }
-    //écoute les mots en sugestion
-    let choixApp = document.getElementsByClassName("elementListeApp");
-    for(var i=0; i<choixApp.length;){
-        let index= choixApp[i].innerHTML
-        index=index.slice(3,-4)
-        choixApp[i].addEventListener('click',()=>new vignetteChoix(index,"App"));
-        i++
     }
 }
 /*------------------le focus sur input---------------- */
@@ -410,7 +406,7 @@ function controlSaisieApp(array){
 
 document.getElementById("appareil").addEventListener("focusout",()=>focusoutApp("listeApp"))
 document.getElementById("appareil").addEventListener("focusin",()=>focusinApp("listeApp"))
-document.getElementById("appareil").addEventListener("input",()=>controlSaisieApp(tabR))
+document.getElementById("appareil").addEventListener("input",()=>controlSaisieApp(tabApp))
 
 function focusinApp(liste){
     window.setTimeout(()=>{
@@ -438,7 +434,7 @@ var tabUst=[];
 function displayTagsStartsUst(array){
     tabUst=[]
     document.getElementById('listeUst').innerHTML=` `;
-    console.log(array)
+    
     array.forEach(ings=>{
         ings.ustensils.forEach(ing=>{
             let elt=ing
@@ -448,7 +444,7 @@ function displayTagsStartsUst(array){
     })
     tabUst= new Set(tabUst);
     displayTags(tabUst,'listeUst',"Ust")
-    clickChoixUst('Ust',array)
+    clickChoixUst('Ust')
 }
 displayTagsStartsUst(tabRecActu)
 function clickChoixUst(type){
@@ -516,25 +512,18 @@ function controlSaisieUst(array){
         //supprimer les doublons
         chaineTabUst=[new Set(chaineTabUst)]
         displayTags(chaineTabUst[0],'listeUst',"Ust")
+        clickChoixUst('Ust')
         //réinitialise les sugestions à 0
         if(saisie==""){
             displayTagsStartsUst(tabRecActu)
         }
 
     }
-    //écoute les mots en sugestion
-    let choixUst = document.getElementsByClassName("elementListeUst");
-    for(var i=0; i<choixUst.length;){
-        let index= choixUst[i].innerHTML
-        index=index.slice(3,-4)
-        choixUst[i].addEventListener('click',()=>new vignetteChoix(index,"Ust"));
-        i++
-    }
 }
 /*------------------le focus sur input---------------- */
 
 document.getElementById("ustensiles").addEventListener("focusin",()=>focusinUst("listeUst"))
-document.getElementById("ustensiles").addEventListener("input",()=>controlSaisieUst(chaineTabUst))
+document.getElementById("ustensiles").addEventListener("input",()=>controlSaisieUst(tabUst))
 document.getElementById("ustensiles").addEventListener("focusout",()=>focusoutUst("listeUst"))
 function focusinUst(liste){
     window.setTimeout(()=>{
@@ -565,7 +554,7 @@ class vignetteChoix{
     constructor(nom,type){
        
         let Nom=nom.replace(/ /g,"")
-        console.log(nom)
+        
         this.element=this.displayVignette(nom,Nom,type)
 
         document.getElementById("boxTagsActifs").appendChild(this.element)
