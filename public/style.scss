@@ -11,7 +11,6 @@ $color:(
     //border-radius: 0.3rem;
 }
 @mixin line-clamp($lines, $line-height) {
-    display: block;
     display: -webkit-box;
     -webkit-line-clamp: $lines;
     -webkit-box-orient: vertical;
@@ -230,6 +229,6 @@ input{
     }
     &__descrip{
         margin: 0;
-        @include line-clamp(6, 1.25rem)
+        @include line-clamp(9, 1.25rem)
     }
 }  
