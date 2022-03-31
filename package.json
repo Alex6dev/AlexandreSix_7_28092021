@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Alex6dev/AlexandreSix_7_28092021/issues"
   },
-  "homepage": "https://github.com/Alex6dev/AlexandreSix_7_28092021#readme"
+  "homepage": "https://github.com/Alex6dev/AlexandreSix_7_28092021#readme",
+  "devDependencies": {
+    "prettier": "^2.5.1"
+  }
 }
