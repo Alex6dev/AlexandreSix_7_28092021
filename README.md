@@ -8,7 +8,7 @@ Create the web page with search functionality in a cooking recipe database.
 
 
 Search page:
-<img src='https://github.com/Alex6dev/AlexandreSix_4_30062021/blob/methodeforeach/screens/screenHome.png' alt="screenshot"/>
+<img src='https://github.com/Alex6dev/AlexandreSix_7_28092021/blob/methodeforeach/screens/screenSearch.png' alt="screenshot"/>
 
 Figma: [link to model](https://www.figma.com/file/xqeE1ZKlHUWi2Efo8r73NK/UI-Design-Les-Petits-Plats-FR?node-id=0%3A1)
 
